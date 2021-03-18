@@ -2,53 +2,98 @@ package com.io.riyaz.stack.implementation;
 
 public class Stack {
 
-	private int[] array;
-	private int top;
-	private int capacity;
+	// store elements of stack
+	  private int arr[];
+	  // represent top of stack
+	  private int top;
+	  // total capacity of the stack
+	  private int capacity;
 	
-	Stack(int capacity){
-		this.array=new int[capacity];
-		this.capacity=capacity;
-		this.top=-1;
-	}
+	// Creating a stack
+	  Stack(int size) {
+	    // initialize the array
+	    // initialize the stack variables
+	    arr = new int[size];
+	    capacity = size;
+	    top = -1;
+	  }
 	
-	public void push(int item) {
-		if(isFull()) {
-			throw new RuntimeException("Stack is Full");
-		}
-		array[++top]=item;
-	}
+	// push elements to the top of stack
+	  public void push(int x) {
+	    if (isFull()) {
+	      System.out.println("Stack OverFlow");
+
+	      // terminates the program
+	      System.exit(1);
+	    }
+
+	    // insert element on top of stack
+	    System.out.println("Inserting " + x);
+	    arr[++top] = x;
+	  }
 	
-	public int pop(int item) {
+	// pop elements from top of stack
+	  public int pop() {
+
+	    // if stack is empty
+	    // no element to pop
+	    if (isEmpty()) {
+	      System.out.println("STACK EMPTY");
+	      // terminates the program
+	      System.exit(1);
+	    }
+
+	    // pop element from top of stack
+	    return arr[top--];
+	  }
+	
+	public int peek() {
 		if(isEmpty()) {
 			throw new RuntimeException("Stack is Empty");
 		}
-		return array[top--]=item;
+		return arr[top];
 		
 	}
 	
-	public int peek(int item) {
-		if(isEmpty()) {
-			throw new RuntimeException("Stack is Empty");
-		}
-		return array[top];
-		
-	}
+	// check if the stack is full
+	  public Boolean isFull() {
+	    return top == capacity - 1;
+	  }
 	
-	private boolean isFull() {
-		
-		return top == capacity-1;
-	}
-	
-	private boolean isEmpty() {
-		
-		return top == -1;
-	}
+	// check if the stack is empty
+	  public Boolean isEmpty() {
+	    return top == -1;
+	  }
+	  
+	// display elements of stack
+	  public void printStack() {
+	    for (int i = 0; i <= top; i++) {
+	      System.out.print(arr[i] + ", ");
+	    }
+	  }
 
 	
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) {		
+		
+		Stack stack = new Stack(5);
+
+	    stack.push(1);
+	    stack.push(2);
+	    stack.push(3);
+
+	    System.out.print("Stack: ");
+	    stack.printStack();
+
+	    // remove element from stack
+	    stack.pop();
+	    System.out.println("\nAfter popping out");
+	    stack.printStack();
+	    
+	    // peek element from stack
+	  
+	    System.out.println("\nAfter peek :"+stack.peek());
+	    stack.printStack();
 
 	}
 
