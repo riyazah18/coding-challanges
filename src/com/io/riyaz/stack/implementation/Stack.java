@@ -47,6 +47,7 @@ public class Stack {
 	    return arr[top--];
 	  }
 	
+	  //Returns top element of stack
 	public int peek() {
 		if(isEmpty()) {
 			throw new RuntimeException("Stack is Empty");
@@ -57,12 +58,12 @@ public class Stack {
 	
 	// check if the stack is full
 	  public Boolean isFull() {
-	    return top == capacity - 1;
+	    return top >= capacity - 1;
 	  }
 	
 	// check if the stack is empty
 	  public Boolean isEmpty() {
-	    return top == -1;
+	    return (top < 0);
 	  }
 	  
 	// display elements of stack
